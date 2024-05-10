@@ -1,20 +1,37 @@
 const { Client, Collection, GatewayIntentBits } = require('discord.js');
-const { token } = require('./config.json');
 const path = require('path');
 const fs = require('fs');
 
-const client = new Client({ intents: [
-		GatewayIntentBits.Guilds, 
+const client = new Client({
+	intents: [
+		GatewayIntentBits.Guilds,
 		GatewayIntentBits.GuildMembers,
 		GatewayIntentBits.GuildMessages,
 		GatewayIntentBits.MessageContent,
-	]});
-	
-const { QuickDB } = require('quick.db')
-const db = new QuickDB({ filePath: './database.sqlite' });
-require('dotenv').config();
+	]
+});
 
-db.init();
+// const db = new QuickDB({ filePath: './database.sqlite' });
+const { QuickDB, MySQLDriver } = require("quick.db");
+(async () => {
+    const mysqlDriver = new MySQLDriver({
+        host: "o1b.h.filess.io",
+        user: "MyDatabase_freedomany",
+        password: "71aeb640f082a216f1ab24bb9c6156f9dc95715f",
+        database: "MyDatabase_freedomany",
+		port: 3307,
+    });
+
+    await mysqlDriver.connect(); // connect to the database **this is important**
+
+    const db = new QuickDB({ driver: mysqlDriver });
+	client.db = db;
+    // Now you can use quick.db as normal
+
+})();
+
+
+require('dotenv').config();
 
 console.log('\x1B[37m===============================================\x1B[0m')
 //====================================
@@ -43,7 +60,6 @@ for (const folder of commandFolders) {
 console.log(`\x1B[37m-----------已成功載入[${c_count}]個指令-----------\x1B[0m`)
 
 //====================================
-client.db = db;
 
 const eventsPath = path.join(__dirname, 'events');
 const eventFiles = fs.readdirSync(eventsPath).filter(file => file.endsWith('.js'));

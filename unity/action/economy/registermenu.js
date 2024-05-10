@@ -4,6 +4,8 @@ const { GetIGN } = require('../../../function/minecraft.js')
 module.exports = {
     customId: 'economy',
     async execute(interaction, client) {
+        await interaction.deferReply({ ephemeral: true })
+
         const getuser = await client.db.get('Account').then(res => { return res.find(arr => arr.id == interaction.user.id) })
         const checkuserregister = await client.db.get('economy').then(res => { return res?.find(arr => arr.id == interaction.user.id) })
 
@@ -26,7 +28,7 @@ module.exports = {
 
         row.addComponents(menu)
 
-        await interaction.reply({ content: `**請選擇你要註冊的遊戲帳號**`, components: [row], ephemeral: true })
+        await interaction.editReply({ content: `**請選擇你要註冊的遊戲帳號**`, components: [row], ephemeral: true })
 
     }
 }

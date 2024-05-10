@@ -12,8 +12,8 @@ module.exports = {
         const ign = interaction.fields.getTextInputValue('gameid')?.replace(/\s/g, '').toLowerCase();
         const uuid = await GetUUID(ign)
 
-        const getuserac = await client.db.get('Account').then(res => { return res.find(arr => arr.ign.some(id => id == uuid) == true) })
-        const getuser = await client.db.get('Account').then(res => { return res.find(arr => arr.id == interaction.user.id) })
+        const getuserac = await client.db.get('Account').then(res => { return res?.find(arr => arr.ign.some(id => id == uuid) == true) })
+        const getuser = await client.db.get('Account').then(res => { return res?.find(arr => arr.id == interaction.user.id) })
 
         if(!uuid) return interaction.editReply({ content: `找不到這個遊戲id`, ephemeral: true })
         if (getuserac) return interaction.editReply({ content: `遊戲帳號已被註冊`, ephemeral: true })
@@ -53,7 +53,7 @@ module.exports = {
         row.addComponents(button)
 
         const channel = interaction.guild.channels.cache.get(WhitelistConfirmChannel)
-        // await channel.send({ embeds: [embed], components: [row] })
+        await channel.send({ embeds: [embed], components: [row] })
 
         await interaction.editReply({ content: `已經把你的id \`${ign}\` 註冊了喔，請等待管理員驗證完後系統會自動通知你!~`, ephemeral: true })
 
