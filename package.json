@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "@discordjs/builders": "^1.7.0",
+    "@discordjs/rest": "^1.7.1",
+    "better-sqlite3": "^9.6.0",
+    "discord-timestamps": "^0.1.4",
+    "discord.js": "^14.9.0",
+    "dotenv": "^16.4.5",
+    "quick.db": "^9.1.7",
+    "rcon-client": "^4.2.4"
+  },
+  "name": "discord-laidback-bot",
+  "version": "1.0.0",
+  "description": "Discord of laidback smp",
+  "main": "index.js",
+  "scripts": {
+    "test": "none",
+    ".": "node deploy.js && node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "none"
+  },
+  "keywords": [
+    "none"
+  ],
+  "author": "Goldball1105",
+  "license": "UNLICENSED"
+}
