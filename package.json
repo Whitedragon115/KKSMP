@@ -2,6 +2,7 @@
   "dependencies": {
     "@discordjs/builders": "^1.7.0",
     "@discordjs/rest": "^1.7.1",
+    "archiver": "^7.0.1",
     "better-sqlite3": "^9.6.0",
     "discord-timestamps": "^0.1.4",
     "discord.js": "^14.9.0",
@@ -15,7 +16,8 @@
   "main": "index.js",
   "scripts": {
     "test": "none",
-    ".": "node deploy.js && node index.js"
+    ".": "node deploy.js && node index.js",
+    "zip": "node CreateZip.js"
   },
   "repository": {
     "type": "git",
