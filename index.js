@@ -1,4 +1,5 @@
 const { Client, Collection, GatewayIntentBits } = require('discord.js');
+const { SQLDatabase, SQLHost, SQLPassword, SQLPort, SQLUser } = require('./config.json')
 const path = require('path');
 const fs = require('fs');
 
@@ -15,11 +16,11 @@ const client = new Client({
 const { QuickDB, MySQLDriver } = require("quick.db");
 (async () => {
     const mysqlDriver = new MySQLDriver({
-        host: "o1b.h.filess.io",
-        user: "MyDatabase_freedomany",
-        password: "71aeb640f082a216f1ab24bb9c6156f9dc95715f",
-        database: "MyDatabase_freedomany",
-		port: 3307,
+        host: SQLHost,
+        user: SQLUser,
+        password: SQLPassword,
+        database: SQLDatabase,
+		port: SQLPort,
     });
 
     await mysqlDriver.connect(); // connect to the database **this is important**
