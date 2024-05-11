@@ -74,11 +74,11 @@ for (const file of eventFiles) {
 	}
 }
 //====================================
-const unityPath = path.join(__dirname, 'unity');
-const unityFiles = fs.readdirSync(unityPath).filter(file => file.endsWith('.js'));
+const utilPath = path.join(__dirname, 'util');
+const utilFiles = fs.readdirSync(utilPath).filter(file => file.endsWith('.js'));
 
-for (const file of unityFiles) {
-	const filePath = path.join(unityPath, file);
+for (const file of utilFiles) {
+	const filePath = path.join(utilPath, file);
 	const event = require(filePath);
 	if (event.once) {
 		client.once(event.name, (...args) => event.execute(...args, client));
@@ -88,7 +88,7 @@ for (const file of unityFiles) {
 }
 //=====================================
 const buttonActions = {};
-const ActionFolderPath = path.join(__dirname, '.', 'unity', 'action');
+const ActionFolderPath = path.join(__dirname, '.', 'util', 'action');
 const actionFolders = fs.readdirSync(ActionFolderPath);
 
 let a_count = 0;

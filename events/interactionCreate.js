@@ -1,4 +1,4 @@
-const { Events, Client, GatewayIntentBits } = require('discord.js');
+const { Events, Client, GatewayIntentBits, Colors } = require('discord.js');
 const { AdminRoleId, CommandChannel } = require('../config.json')
 const fs = require('node:fs');
 const path = require('node:path');
@@ -11,7 +11,7 @@ module.exports = {
 		const Action = {};
 
 		const command = interaction.client.commands.get(interaction.commandName);
-		const ActionFolderPath = path.join(__dirname, '..', 'unity', 'action');
+		const ActionFolderPath = path.join(__dirname, '..', 'util', 'action');
 		const actionFolders = fs.readdirSync(ActionFolderPath);
 
 		for (const folder of actionFolders) {

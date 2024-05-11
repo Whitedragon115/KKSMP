@@ -11,14 +11,15 @@
     "mongoose": "^8.3.4",
     "mysql2": "^3.9.7",
     "quick.db": "^9.1.7",
-    "rcon-client": "^4.2.4"
+    "rcon-client": "^4.2.4",
+    "sourcebin": "^5.0.0"
   },
   "name": "discord-laidback-bot",
   "version": "1.0.0",
   "description": "Discord of laidback smp",
   "main": "index.js",
   "scripts": {
-    "test": "none",
+    "dp": "node deploy.js",
     ".": "node deploy.js && node index.js",
     "zip": "node CreateZip.js"
   },
