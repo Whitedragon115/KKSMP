@@ -70,7 +70,7 @@ module.exports = {
             const embed = new EmbedBuilder()
                 .setColor(0xff0000)
                 .setTitle('錯誤')
-                .setDescription(`**錯誤資訊：**金額必須大於\`0.01\``)
+                .setDescription(`**錯誤資訊：**金額必須大於\`0.00\``)
                 .setTimestamp()
             return interaction.reply({ embeds: [embed] })
         }
