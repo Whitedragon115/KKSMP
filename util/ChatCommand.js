@@ -1,8 +1,8 @@
 const { Events } = require('discord.js');
 const { AdminRoleId } = require('../config.json');
 const { CreateWhitelistPanel } = require('../function/whitelist.js');
-const { CreateConsolePanel } = require('../function/minecraftconsole.js')
-const { CreateEconomyRegisterPanel } = require('../function/economy.js')
+const { CreateConsolePanel } = require('../function/minecraftconsole.js');
+const { CreateEconomyRegisterPanel } = require('../function/economy.js');
 
 module.exports = {
     name: Events.MessageCreate,
@@ -32,5 +32,6 @@ module.exports = {
                 break;
             default:
         }
+        
     },
 };
