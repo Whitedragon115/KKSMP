@@ -11,7 +11,7 @@ archive.on('error', (err) => { throw err });
 archive.pipe(output);
 
 const archive_file = ['index.js', 'config.json', 'package.json', 'deploy.js', '.env'];
-const acchive_folder = ['commands', 'events', 'function', 'unity'];
+const acchive_folder = ['commands', 'events', 'function', 'util'];
 
 for (const file of archive_file) {
     archive.file(path.join(__dirname, file), { name: file })

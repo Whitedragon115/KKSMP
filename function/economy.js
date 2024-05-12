@@ -62,11 +62,28 @@ async function SetUserMoney(ign, money) {
     return res
 }
 
+async function CheckUserAvailable(interaction, client) {
+    const finduser = await client.db.get('economy').then(res => { return res.find(arr => arr.id == interaction.user.id) })
+    if (!finduser) {
+        const embed = new EmbedBuilder()
+            .setColor(0xff0000)
+            .setTitle('經濟錯誤')
+            .setDescription(`**錯誤資訊：**找你的的經濟帳號帳號，請前往註冊`)
+            .addFields()
+            .setTimestamp()
+        await interaction.reply({ embeds: [embed] })
+        return false
+    } else {
+        return finduser
+    }
+}
+
 
 module.exports = {
     CreateEconomyRegisterPanel,
     GetUserMoney,
     GiveUserMoney,
     TakeUserMoney,
-    SetUserMoney
+    SetUserMoney,
+    CheckUserAvailable
 }

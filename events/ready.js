@@ -1,19 +1,19 @@
-const { Events } = require('discord.js');
-const { clientId, guildId, BotCondition } = require('../config.json')
+const { Events, ActivityType, PresenceUpdateStatus } = require('discord.js');
+const { BotCondition } = require('../config.json')
+const { color } = require('console-log-colors')
 
 
 module.exports = {
     name: Events.ClientReady,
     once: true,
-    async execute(client) {        
-        client.user.setActivity({ name: BotCondition, type: 2 });
+    async execute(client) {
+        client.user.setPresence({ activities: [{ name: 'KKSMP!', type: ActivityType.Watching }], status: PresenceUpdateStatus.DoNotDisturb })
 
-        console.log(`\x1B[32mLogin : Bot \x1B[33m${client.user.tag}\n\x1B[32mBotID : \x1B[33m${clientId}\x1B[0m`);
-        console.log(`\x1B[32mServerID : \x1B[33m${guildId}`);
-        console.log('\x1B[0m-----------------------------')
-        const guild = client.guilds.cache.get(guildId);
+        const guild = client.guilds.cache.get(process.env.GUILDID);
         const memberCount = guild.memberCount;
-        console.log(`\x1B[32m伺服器中有 \x1B[33m${memberCount} \x1B[32m位成員\x1B[34m`);
+
+        const login_string = `${color.green('Login : Bot')} ${color.yellow(client.user.tag)}  ║  ${color.green('BotID :')} ${color.yellow(process.env.CLEINTID)}  ║  ${color.green('Server :')} ${color.yellow(guild.name)}  ║  ${color.green('Server Member :')} ${color.yellow(memberCount)}`
+        console.log(login_string);
 
     },
 };
